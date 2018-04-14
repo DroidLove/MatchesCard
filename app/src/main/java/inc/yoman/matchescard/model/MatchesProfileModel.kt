@@ -28,7 +28,7 @@ data class MatchesProfileModel(var gender: String = "") {
     }
 
     class Location {
-        var postcode: Int = 0
+        var postcode: String = ""
         var state: String = ""
         var city: String = ""
         var street: String = ""

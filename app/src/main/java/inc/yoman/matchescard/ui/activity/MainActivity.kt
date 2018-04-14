@@ -22,8 +22,6 @@ import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var listMatchesProfile: ArrayList<MatchesProfileModel>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,8 +31,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        listMatchesProfile = ArrayList()
-
         val layout = LinearLayoutManager(this)
         recyclerView_matches_card.layoutManager = layout
     }
