@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import inc.yoman.matchescard.R
 import inc.yoman.matchescard.model.MatchesProfileModel
 import inc.yoman.matchescard.utils.AppUtils
 import kotlinx.android.synthetic.main.item_matches_profile.view.*
