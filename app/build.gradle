@@ -12,7 +12,7 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -36,4 +36,5 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.1.8'
 
     implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

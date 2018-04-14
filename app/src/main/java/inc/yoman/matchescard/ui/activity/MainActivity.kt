@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ result ->
                     progress_bar.visibility = View.GONE
-                        val adapterMatchesProfile = MatchesProfileAdapter(result)
+                        val adapterMatchesProfile = MatchesProfileAdapter(this,result)
                         recyclerView_matches_card.adapter = adapterMatchesProfile
                 }, { e -> AppUtils.logMe("Api Call error", e.toString())
                 })

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MatchesCard</string>
+
+    <string name="invalid_mobile_found">Contact number not available</string>
 </resources>

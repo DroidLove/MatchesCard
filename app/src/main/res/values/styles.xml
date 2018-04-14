@@ -9,7 +9,6 @@
     </style>
 
     <style name="CardViewStyle_Normal" parent="CardView">
-        <item name="android:foreground">?android:attr/selectableItemBackground</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="cardCornerRadius">@dimen/card_corner_radius</item>
