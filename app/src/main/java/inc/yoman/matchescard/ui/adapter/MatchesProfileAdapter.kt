@@ -29,7 +29,8 @@ class MatchesProfileAdapter(activity: Activity, data: List<MatchesProfileModel>)
     class MatchesProfileViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(activity: Activity, item: MatchesProfileModel) = with(itemView) {
 
-            var userDetails: String  = (item.name.title).capitalize() + " " + (item.name.first).capitalize() + " " + (item.name.last).capitalize()
+            var userDetails: String  = (item.name.title).capitalize() + " " + (item.name.first).capitalize() + " " + (item.name.last).capitalize() + ", "
+//            + AppUtils.calculateUserAge(item.dob)
 
             itemView.textView_user_details.text = userDetails
             itemView.textView_address.text = (item.location.city).capitalize() + ", " + (item.location.state).capitalize()
