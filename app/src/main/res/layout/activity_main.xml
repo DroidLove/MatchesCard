@@ -15,6 +15,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:id="@+id/linearLayout_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/doppio_one"
+            android:text="No content"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageVIew_refresh_listing"
+            android:layout_width="@dimen/dimen_48"
+            android:layout_marginTop="@dimen/dimen_8"
+            android:layout_height="@dimen/dimen_48"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_refresh_black_24dp"/>
+
+        </LinearLayout>
+
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"

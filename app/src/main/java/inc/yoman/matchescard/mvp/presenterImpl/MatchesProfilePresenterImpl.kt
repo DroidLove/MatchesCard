@@ -23,10 +23,8 @@ class MatchesProfilePresenterImpl(private val baseView: BaseView) : MatchesProfi
     }
 
     override fun onResponse(responseJson: Flowable<MutableList<MatchesProfileResponseModel>>) {
+         baseView.hideProgress()
          baseView.onResponseSuccess(responseJson)
-    }
-    override fun onError(responseJson: Any, apiName: String) {
-
     }
 
     override fun mappingResult(result: Any): MutableList<MatchesProfileResponseModel> {
@@ -40,13 +38,11 @@ class MatchesProfilePresenterImpl(private val baseView: BaseView) : MatchesProfi
                 .subscribe({ result ->
                     listMatchesProfile.add(result)
                 }
-                        , { e -> AppUtils.logMe("Response Mapping error", e.toString()) })
+                        , { e -> AppUtils.logMe("Response Mapping error", e.toString())
+                    baseView.onResponseFailure(e.toString())
+                })
 
         return listMatchesProfile
-    }
-
-    override fun onConnectionLost(e: Throwable) {
-        baseView.onConnectionLost(e)
     }
 
     override fun getMatchesProfileListing(listCount: String) {

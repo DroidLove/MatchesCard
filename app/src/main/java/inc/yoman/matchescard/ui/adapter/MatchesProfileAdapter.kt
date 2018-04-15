@@ -13,10 +13,11 @@ import kotlinx.android.synthetic.main.item_matches_profile.view.*
 
 
 
-class MatchesProfileAdapter(activity: Activity, data: MutableList<MatchesProfileResponseModel>) : RecyclerView.Adapter<MatchesProfileAdapter.MatchesProfileViewHolder>() {
+class MatchesProfileAdapter(activity: Activity, matchProfileInterface: MatchesProfileRefreshInterface, data: MutableList<MatchesProfileResponseModel>) : RecyclerView.Adapter<MatchesProfileAdapter.MatchesProfileViewHolder>() {
 
     private var data: MutableList<MatchesProfileResponseModel> = data
     private var activity: Activity = activity
+    private var matchProfileInterface: MatchesProfileRefreshInterface = matchProfileInterface
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchesProfileViewHolder {
         return MatchesProfileViewHolder(
@@ -53,6 +54,9 @@ class MatchesProfileAdapter(activity: Activity, data: MutableList<MatchesProfile
             layoutPosition.also { currentPosition ->
                 data.removeAt(currentPosition)
                 notifyItemRemoved(currentPosition)
+
+                if(data.isEmpty())
+                    matchProfileInterface.onListingEmpty()
             }
         }
     }
@@ -60,5 +64,9 @@ class MatchesProfileAdapter(activity: Activity, data: MutableList<MatchesProfile
     private fun setAnimation(context:Activity, viewToAnimate: View) {
             val animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_out_right)
             viewToAnimate.startAnimation(animation)
+    }
+
+    interface MatchesProfileRefreshInterface {
+        fun onListingEmpty()
     }
 }

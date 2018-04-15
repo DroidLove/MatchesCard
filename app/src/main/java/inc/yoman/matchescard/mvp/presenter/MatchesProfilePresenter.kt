@@ -9,8 +9,4 @@ interface MatchesProfilePresenter {
     fun mappingResult(result: Any): MutableList<MatchesProfileResponseModel>
 
     fun onResponse(responseJson: Flowable<MutableList<MatchesProfileResponseModel>>)
-
-    fun onError(responseJson: Any, apiName: String)
-
-    fun onConnectionLost(e: Throwable)
 }

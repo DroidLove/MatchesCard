@@ -3,6 +3,8 @@ package inc.yoman.matchescard.utils
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.net.ParseException
 import android.net.Uri
 import android.text.TextUtils
@@ -24,11 +26,11 @@ class AppUtils {
             Toast.makeText(mContext, message, Toast.LENGTH_LONG).show()
         }
 
-        fun loadImageInImageView(url : String, imageView : ImageView, gender: String) {
+        fun loadImageInImageView(url: String, imageView: ImageView, gender: String) {
             url?.let {
-                if(!TextUtils.isEmpty(it)) {
-                    if(TextUtils.equals("female", gender))
-                         Picasso.get().load(url).placeholder(R.drawable.placeholder_female).into(imageView)
+                if (!TextUtils.isEmpty(it)) {
+                    if (TextUtils.equals("female", gender))
+                        Picasso.get().load(url).placeholder(R.drawable.placeholder_female).into(imageView)
                     else
                         Picasso.get().load(url).placeholder(R.drawable.placeholder_male).into(imageView)
                 }
@@ -45,7 +47,7 @@ class AppUtils {
             }
         }
 
-        fun sendEmail(activity: Activity,emailId: String){
+        fun sendEmail(activity: Activity, emailId: String) {
             val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                     "mailto", emailId, null))
             activity.startActivity(Intent.createChooser(emailIntent, "Send email"))
@@ -84,6 +86,18 @@ class AppUtils {
             }
 
             return age
+        }
+
+        fun isOnline(context: Context): Boolean {
+            var cm: ConnectivityManager= context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+            if (cm == null)
+                return false
+
+            var networkInfo: NetworkInfo? = cm?.let { it.activeNetworkInfo }
+            // if no network is available networkInfo will be null
+            // otherwise check if we are connected
+            return (networkInfo != null && networkInfo.isConnected);
         }
     }
 }

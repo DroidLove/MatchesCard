@@ -17,7 +17,7 @@ import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), BaseView {
+class MainActivity : AppCompatActivity(), BaseView, MatchesProfileAdapter.MatchesProfileRefreshInterface {
 
     lateinit var matchesPresenter: MatchesProfilePresenterImpl
 
@@ -26,22 +26,40 @@ class MainActivity : AppCompatActivity(), BaseView {
         setContentView(R.layout.activity_main)
 
         init()
+        clickListeners()
     }
 
     private fun init() {
         val layout = LinearLayoutManager(this)
         recyclerView_matches_card.layoutManager = layout
 
+        val spacing = resources.getDimensionPixelOffset(R.dimen.default_spacing_small)
+        recyclerView_matches_card.addItemDecoration(ItemOffsetDecoration(spacing))
+
         matchesPresenter = MatchesProfilePresenterImpl(this)
-        matchesPresenter.getMatchesProfileListing("10")
+        apiCallFromPresenter()
+    }
+
+    private fun clickListeners() {
+        imageVIew_refresh_listing.setOnClickListener { apiCallFromPresenter() }
+    }
+
+    private fun apiCallFromPresenter() {
+        if(AppUtils.isOnline(this)) {
+            progress_bar.visibility = View.VISIBLE
+            matchesPresenter.getMatchesProfileListing("10")
+        }
+        else {
+            AppUtils.toastMessage(this, getString(R.string.no_internet_connection))
+            progress_bar.visibility = View.GONE
+            linearLayout_content.visibility = View.VISIBLE
+            textView_info.text = getString(R.string.please_try_again)
+        }
     }
 
     private fun populateRecyclerView(result: MutableList<MatchesProfileResponseModel>) {
-        val adapterMatchesProfile = MatchesProfileAdapter(this,result)
+        val adapterMatchesProfile = MatchesProfileAdapter(this, this, result)
         recyclerView_matches_card.adapter = adapterMatchesProfile
-
-        val spacing = resources.getDimensionPixelOffset(R.dimen.default_spacing_small)
-        recyclerView_matches_card.addItemDecoration(ItemOffsetDecoration(spacing))
 
         val context = recyclerView_matches_card.context
 
@@ -56,6 +74,7 @@ class MainActivity : AppCompatActivity(), BaseView {
     }
 
     override fun hideProgress() {
+        linearLayout_content.visibility = View.GONE
     }
 
     override fun onResponseSuccess(mutableListFlowable: Flowable<MutableList<MatchesProfileResponseModel>>) {
@@ -64,23 +83,17 @@ class MainActivity : AppCompatActivity(), BaseView {
                 {it ->  it?.let {
                     progress_bar.visibility = View.GONE
                     populateRecyclerView(it)
-                    AppUtils.toastMessage(this,"Success")
                 }}
         )
     }
 
+    override fun onListingEmpty() {
+        linearLayout_content.visibility = View.VISIBLE
+        textView_info.text = getString(R.string.refresh_to_see_more)
+    }
+
     override fun onResponseFailure(msg: String) {
-    }
-
-    override fun onErrorResponse(data: Any, apiName: String) {
-    }
-
-    override fun switchVisibility(type: Int) {
-    }
-
-    override fun switchVisibility(type: Int, msg: String) {
-    }
-
-    override fun onConnectionLost(e: Throwable) {
+        linearLayout_content.visibility = View.VISIBLE
+        textView_info.text = getString(R.string.general_error_message)
     }
 }

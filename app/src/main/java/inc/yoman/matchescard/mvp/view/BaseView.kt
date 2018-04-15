@@ -13,12 +13,4 @@ interface BaseView {
     fun onResponseSuccess(mutableListFlowable:  Flowable<MutableList<MatchesProfileResponseModel>>)
 
     fun onResponseFailure(msg: String)
-
-    fun onErrorResponse(data: Any, apiName: String)
-
-    fun switchVisibility(type: Int)
-
-    fun switchVisibility(type: Int, msg: String)
-
-    fun onConnectionLost(e: Throwable)
 }

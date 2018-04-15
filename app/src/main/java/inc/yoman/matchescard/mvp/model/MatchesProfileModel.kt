@@ -7,6 +7,7 @@ import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
+import java.util.concurrent.TimeUnit
 
 /**
  */
@@ -25,7 +26,10 @@ class MatchesProfileModel(private val presenter: MatchesProfilePresenter) {
             logging.level = HttpLoggingInterceptor.Level.BODY
 
             val client = OkHttpClient.Builder()
-                    .addInterceptor(logging).build()
+                    .readTimeout(5, TimeUnit.MINUTES)
+                    .connectTimeout(5, TimeUnit.MINUTES)
+                    .addInterceptor(logging)
+                    .build()
 
             val response = client.newCall(request).execute()
             return@fromCallable response?.body()?.string()
