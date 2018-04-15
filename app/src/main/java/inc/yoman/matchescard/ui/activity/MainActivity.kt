@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                 })
     }
 
-    private fun populateRecyclerView(result: ArrayList<MatchesProfileModel>) {
+    private fun populateRecyclerView(result: MutableList<MatchesProfileModel>) {
         val adapterMatchesProfile = MatchesProfileAdapter(this,result)
         recyclerView_matches_card.adapter = adapterMatchesProfile
 
@@ -81,8 +81,8 @@ class MainActivity : AppCompatActivity() {
         recyclerView_matches_card.scheduleLayoutAnimation()
     }
 
-    private fun mappingResult(result: Any): ArrayList<MatchesProfileModel> {
-        val listMatchesProfile: ArrayList<MatchesProfileModel> = ArrayList()
+    private fun mappingResult(result: Any): MutableList<MatchesProfileModel> {
+        val listMatchesProfile: MutableList<MatchesProfileModel> = ArrayList()
         val jsonObj = JSONObject(result.toString())
         val jsonArray = JSONArray(jsonObj.get("results").toString())
 

@@ -5,6 +5,7 @@
         style="@style/CardViewStyle_Normal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:descendantFocusability="afterDescendants"
         android:padding="@dimen/dimen_16"
         android:background="@color/white">
 
@@ -29,9 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
+            android:fontFamily="@font/doppio_one"
             android:text="Username"
             android:textSize="16sp"
-            android:fontFamily="@font/doppio_one"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageView_profile"
             app:layout_constraintTop_toTopOf="@+id/imageView_profile" />
@@ -49,65 +50,71 @@
             app:layout_constraintTop_toBottomOf="@+id/textView_user_details" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_accept"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/doppio_one"
             android:background="@drawable/shape_outcoming_message"
+            android:fontFamily="@font/doppio_one"
             android:text="Accept"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintEnd_toStartOf="@+id/button_reject"
             app:layout_constraintHorizontal_bias="0.5"
+            android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintHorizontal_weight="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView_profile" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView_call" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button_reject"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="Reject"
-            android:fontFamily="@font/doppio_one"
-            android:textColor="@color/white"
             android:background="@drawable/shape_incoming_message"
+            android:fontFamily="@font/doppio_one"
+            android:text="Reject"
+            android:textColor="@color/white"
+            android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintHorizontal_weight="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button" />
+            app:layout_constraintStart_toEndOf="@+id/button_accept" />
 
         <ImageView
             android:id="@+id/imageView_call"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:padding="@dimen/dimen_4"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:foreground="?android:attr/selectableItemBackground"
+            android:padding="@dimen/dimen_4"
             app:layout_constraintEnd_toStartOf="@+id/imageView_email"
-            app:layout_constraintTop_toTopOf="@+id/textView_user_details"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_profile"
             app:srcCompat="@drawable/ic_call_black_24dp" />
 
         <ImageView
             android:id="@+id/imageView_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
             android:foreground="?android:attr/selectableItemBackground"
             android:padding="@dimen/dimen_4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView_user_details"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/imageView_call"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_profile"
             app:srcCompat="@drawable/ic_email_black_24dp" />
 
     </android.support.constraint.ConstraintLayout>
