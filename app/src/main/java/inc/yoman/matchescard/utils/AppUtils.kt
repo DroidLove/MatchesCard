@@ -54,17 +54,17 @@ class AppUtils {
         fun calculateUserAge(date: String): Int {
             var age = 0
             try {
-//                1976-10-16 19:25:00
-                val format = "yyyy-MM-dd  HH:mm:ss"
+                val format = "yyyy-MM-dd HH:mm:ss"
                 val dateFormat = SimpleDateFormat(format, Locale.ENGLISH);
 
                 val date1 = dateFormat.parse(date)
                 val now = Calendar.getInstance()
                 val dob = Calendar.getInstance()
                 dob.time = date1
-                if (dob.after(now)) {
-                    throw IllegalArgumentException("Can't be born in the future")
-                }
+
+//                if (dob.after(now)) {
+//                    throw IllegalArgumentException("Can't be born in the future")
+//                }
                 val year1 = now.get(Calendar.YEAR)
                 val year2 = dob.get(Calendar.YEAR)
                 age = year1 - year2
