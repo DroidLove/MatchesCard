@@ -35,4 +35,5 @@
     <dimen name="dialog_avatar_height">56dp</dimen>
 
     <dimen name="default_spacing_small">4dp</dimen>
+    <dimen name="dimen_38">38dp</dimen>
 </resources>

@@ -1,13 +1,6 @@
-package inc.yoman.matchescard.model
+package inc.yoman.matchescard.helper
 
-data class MatchesProfileModel(var gender: String = "") {
-
-//    class Info {
-//        var version: String = ""
-//        var page: Int = 0
-//        var results: Int = 0
-//        var seed: String = ""
-//    }
+data class MatchesProfileResponseModel(var gender: String = "") {
 
     var nat: String = ""
     lateinit var picture: Picture

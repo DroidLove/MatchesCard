@@ -7,15 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import inc.yoman.matchescard.R
-import inc.yoman.matchescard.model.MatchesProfileModel
+import inc.yoman.matchescard.helper.MatchesProfileResponseModel
 import inc.yoman.matchescard.utils.AppUtils
 import kotlinx.android.synthetic.main.item_matches_profile.view.*
 
 
 
-class MatchesProfileAdapter(activity: Activity, data: MutableList<MatchesProfileModel>) : RecyclerView.Adapter<MatchesProfileAdapter.MatchesProfileViewHolder>() {
+class MatchesProfileAdapter(activity: Activity, data: MutableList<MatchesProfileResponseModel>) : RecyclerView.Adapter<MatchesProfileAdapter.MatchesProfileViewHolder>() {
 
-    private var data: MutableList<MatchesProfileModel> = data
+    private var data: MutableList<MatchesProfileResponseModel> = data
     private var activity: Activity = activity
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchesProfileViewHolder {
