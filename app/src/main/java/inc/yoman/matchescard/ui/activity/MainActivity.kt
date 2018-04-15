@@ -17,6 +17,11 @@ import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * Using the MVP pattern to organize the code
+ * For API calling, we used OkHttp library with RxJava2 for asynchronous calls and
+ * later updating the UI with Help of RxAndroid2
+ */
 class MainActivity : AppCompatActivity(), BaseView, MatchesProfileAdapter.MatchesProfileRefreshInterface {
 
     lateinit var matchesPresenter: MatchesProfilePresenterImpl

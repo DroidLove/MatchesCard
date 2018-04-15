@@ -10,6 +10,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
 /**
+ * Using OkHttp for the Network calls
  */
 
 class MatchesProfileModel(private val presenter: MatchesProfilePresenter) {

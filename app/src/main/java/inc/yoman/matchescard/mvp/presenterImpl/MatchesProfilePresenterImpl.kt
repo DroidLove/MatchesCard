@@ -1,6 +1,5 @@
 package inc.yoman.matchescard.mvp.presenterImpl
 
-
 import com.google.gson.Gson
 import inc.yoman.matchescard.helper.MatchesProfileResponseModel
 import inc.yoman.matchescard.mvp.model.MatchesProfileModel
@@ -12,6 +11,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 /**
+ * Getting the response using the Flowable(Observable) by using
+ * appropriate operators
  */
 
 class MatchesProfilePresenterImpl(private val baseView: BaseView) : MatchesProfilePresenter {

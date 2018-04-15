@@ -11,8 +11,6 @@ import inc.yoman.matchescard.helper.MatchesProfileResponseModel
 import inc.yoman.matchescard.utils.AppUtils
 import kotlinx.android.synthetic.main.item_matches_profile.view.*
 
-
-
 class MatchesProfileAdapter(activity: Activity, matchProfileInterface: MatchesProfileRefreshInterface, data: MutableList<MatchesProfileResponseModel>) : RecyclerView.Adapter<MatchesProfileAdapter.MatchesProfileViewHolder>() {
 
     private var data: MutableList<MatchesProfileResponseModel> = data
