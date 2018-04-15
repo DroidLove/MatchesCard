@@ -42,20 +42,19 @@ class MatchesProfileAdapter(activity: Activity, matchProfileInterface: MatchesPr
                 imageView_email.setOnClickListener {  AppUtils.sendEmail(activity, data[position].email) }
                 button_accept.setOnClickListener {
                     setAnimation(activity, itemView)
-                    remove() }
+                    remove(position) }
                 button_reject.setOnClickListener {
                     setAnimation(activity, itemView)
-                    remove() }
+                    remove(position) }
         }
 
-        private fun remove() {
-            layoutPosition.also { currentPosition ->
-                data.removeAt(currentPosition)
-                notifyItemRemoved(currentPosition)
+        private fun remove(position: Int) {
+                data.removeAt(position)
+                notifyItemRemoved(position)
+                notifyItemRangeChanged(position,data.size)
 
                 if(data.isEmpty())
                     matchProfileInterface.onListingEmpty()
-            }
         }
     }
 
